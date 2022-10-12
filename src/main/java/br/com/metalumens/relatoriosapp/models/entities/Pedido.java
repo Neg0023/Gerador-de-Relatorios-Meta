@@ -1,5 +1,8 @@
 package br.com.metalumens.relatoriosapp.models.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Pedido {
 
     private final String nome;
@@ -14,6 +17,8 @@ public class Pedido {
     private final String loja;
     private final String tipoIntegracao;
     private final Boolean descontoEmPorcentagem;
+
+    private List<Produto> produtos = new ArrayList<>();
 
     public Pedido(String nome, String data, Integer numero, Double valorFrete, String situacao, Long origem, Double totalProdutos, Double totalVenda, Double desconto, String loja, String tipoIntegracao, Boolean descontoEmPorcentagem) {
         this.nome = nome;
@@ -78,6 +83,14 @@ public class Pedido {
         return descontoEmPorcentagem;
     }
 
+    public void addProdutos(Produto produto) {
+        produtos.add(produto);
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
     @Override
     public String toString() {
         return "Pedido{" +
@@ -93,6 +106,7 @@ public class Pedido {
                 ", loja='" + loja + '\'' +
                 ", tipoIntegracao='" + tipoIntegracao + '\'' +
                 ", descontoEmPorcentagem=" + descontoEmPorcentagem +
+                ", produtos=" + produtos +
                 '}';
     }
 }
